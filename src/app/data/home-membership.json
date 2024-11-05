@@ -1,0 +1,28 @@
+[
+  {
+    "src": "/photo11.jpg",
+    "title": "Studio Classes",
+    "href": "/studio-classes"
+  },
+  {
+    "src": "/photo4.jpg",
+    "title": "Semi - Private Personal Training",
+    "href": "/semi-private-training"
+  },
+  {
+    "src": "/photo2.jpg",
+    "title": "Personal Training",
+    "href": "/personal-training"
+  },
+
+  {
+    "src": "/photo8.jpg",
+    "title": "Kids Fitness Sessions",
+    "href": "/kids-fitness-training"
+  },
+  {
+    "src": "/photo10.jpg",
+    "title": "Gym",
+    "href": "/gym"
+  }
+]

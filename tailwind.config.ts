@@ -12,6 +12,15 @@ const config: Config = {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      fontFamily: {
+        custom: [
+          '"League Spartan"',
+          '"Futura HV BT Heavy"',
+          'Montserrat',
+          'Arial',
+          'sans-serif'
+        ],
+      }
     },
   },
   plugins: [],

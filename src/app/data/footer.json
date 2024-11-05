@@ -1,0 +1,17 @@
+{
+  "membership": [
+    {
+      "title": "Memberships",
+      "href": "/memberships"
+    },
+    {
+      "title": "Enquire about membership",
+      "href": "/enquire-about-membership"
+    },
+
+    {
+      "title": "Book a tour",
+      "href": "/book-a-tour"
+    }
+  ]
+}

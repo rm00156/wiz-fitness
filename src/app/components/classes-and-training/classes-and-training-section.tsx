@@ -11,7 +11,7 @@ const ClassesAndTrainingSection = ({
   return (
     <div
       id="classes"
-      className="container pt-[120px] pb-10 sm:pt-[150px] bg-white px-5 mx-auto mb-8"
+      className=" pt-[120px] pb-[70px] sm:pt-[150px] bg-white px-5 mx-auto"
     >
       <div className="text-center mx-auto text-black max-w-4xl">
         <p className="text-2xl md:text-4xl  mb-5">

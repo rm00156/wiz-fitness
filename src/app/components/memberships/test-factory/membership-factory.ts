@@ -1,3 +1,4 @@
+import { Membership } from "@/app/constants";
 import { factory } from "node-factory";
 
 export const membershipsFactory = factory<Membership[]>(() => [

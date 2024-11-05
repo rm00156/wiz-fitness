@@ -1,0 +1,62 @@
+[
+  {
+    "id": "1",
+    "href": "#",
+    "name": "Platinum",
+    "contractPrice": 249,
+    "rollingPrice": 306,
+    "description": "Our most inclusive membership gives you unlimited access to all Clubs and facilities*, including luxury Sauna.",
+    "features": [
+      { "name": "Gym", "access": true },
+      { "name": "Fitness Classes", "access": true },
+      { "name": "Unrestricted Access", "access": true },
+      { "name": "Sauna Access", "access": true },
+      { "name": "Monthly Guest Pass", "access": true },
+      { "name": "Free Towel on every visit", "access": true },
+      { "name": "10% discount in shop", "access": true },
+      { "name": "10% discount on Kids sessions", "access": true },
+      { "name": "Access to exclusive digital content", "access": true }
+    ]
+  },
+
+  {
+    "id": "2",
+    "href": "#",
+    "name": "Plus",
+    "contractPrice": 180,
+    "rollingPrice": 220,
+    "isMostPopular": true,
+    "description": "Our most popular membership option gives you unlimited access to facilities at WizFit.",
+    "features": [
+      { "name": "Gym", "access": true },
+      { "name": "Fitness Classes", "access": true },
+      { "name": "Unrestricted Access", "access": true },
+      { "name": "Sauna Access", "access": true },
+      { "name": "Monthly Guest Pass", "access": true },
+      { "name": "Free Towel on every visit", "access": false },
+      { "name": "10% discount in shop", "access": false },
+      { "name": "10% discount on Kids sessions", "access": false },
+      { "name": "Access to exclusive digital content", "access": false }
+    ]
+  },
+
+  {
+    "id": "3",
+    "href": "#",
+    "name": "Club",
+    "contractPrice": 74,
+    "rollingPrice": 90,
+    "description": "Gives you access to our facilities at off-peak times during the day: 11am-4pm weekdays and after 2pm weekends.",
+    "features": [
+      { "name": "Gym", "access": true },
+      { "name": "Fitness Classes", "access": true },
+      { "name": "Unrestricted Access", "access": true },
+      { "name": "Sauna Access", "access": false },
+      { "name": "Monthly Guest Pass", "access": false },
+      { "name": "Free Towel on every visit", "access": false },
+      { "name": "10% discount in shop", "access": false },
+      { "name": "10% discount on Kids sessions", "access": false },
+      { "name": "Access to exclusive digital content", "access": false }
+    ]
+  }
+]

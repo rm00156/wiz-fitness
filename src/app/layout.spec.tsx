@@ -1,10 +1,17 @@
-import { render } from "@testing-library/react";
+import { queryByTestId, render } from "@testing-library/react";
 import RootLayout from "./layout";
 import { ReactElement } from "react";
+import NavJson from "./data/nav.json";
 
-jest.mock("./data/nav.json", () => ({
-  isDisplayBanner: "true",
-}));
+// jest.mock("./data/nav.json", () => ({
+//   isDisplayBanner: "true",
+// }));
+// testFile.test.js
+jest.mock("./data/nav.json", () => ({}), { virtual: true });
+
+beforeEach(() => {
+  jest.resetModules(); // This ensures each test gets a fresh mock
+});
 
 jest.mock("./components/nav/nav-links", () => ({
   NavLinks: () => <div data-testid="nav-links">Nav Links</div>,
@@ -19,6 +26,10 @@ jest.mock("./components/banner/banner", () => ({
   __esModule: true,
   default: () => <div data-testid="banner">Banner</div>,
 }));
+
+beforeEach(() => {
+  jest.resetModules(); // This ensures each test gets a fresh mock
+});
 
 describe("layout", () => {
   const renderLayoutContent = async () => {
@@ -36,11 +47,27 @@ describe("layout", () => {
   };
 
   it("should render layout when displaying banner correctly", async () => {
+    jest.doMock("./data/nav.json", () => ({
+      isDisplayBanner: true,
+    }));
     const bodyChildren = await renderLayoutContent();
 
     const { getByTestId } = render(<div>{bodyChildren}</div>);
     expect(getByTestId("nav-links")).toBeInTheDocument();
     expect(getByTestId("banner")).toBeInTheDocument();
+    expect(getByTestId("test-content")).toBeInTheDocument();
+    expect(getByTestId("footer")).toBeInTheDocument();
+  });
+
+  it("should render layout when displaying banner correctly", async () => {
+    jest.doMock("./data/nav.json", () => ({
+      isDisplayBanner: false,
+    }));
+    const bodyChildren = await renderLayoutContent();
+
+    const { getByTestId, queryByTestId } = render(<div>{bodyChildren}</div>);
+    expect(getByTestId("nav-links")).toBeInTheDocument();
+    expect(queryByTestId("banner")).not.toBeInTheDocument();
     expect(getByTestId("test-content")).toBeInTheDocument();
     expect(getByTestId("footer")).toBeInTheDocument();
   });

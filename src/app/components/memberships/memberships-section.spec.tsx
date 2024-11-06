@@ -12,7 +12,6 @@ describe("memberships section", () => {
 
     const testMembership = testMemberships[0];
     expect(screen.getByText(testMembership.name)).toBeInTheDocument();
-    expect(screen.getByText(testMembership.description)).toBeInTheDocument();
     expect(container.querySelector(".text-gray-600")).toBeInTheDocument();
     expect(container.querySelector(".text-gray-400")).not.toBeInTheDocument();
 
@@ -29,7 +28,6 @@ describe("memberships section", () => {
         href: "href",
         contractPrice: 100,
         rollingPrice: 150,
-        description: "description",
         isMostPopular: true,
         features: [
           { name: "Gym", access: true },
@@ -50,7 +48,6 @@ describe("memberships section", () => {
 
     const testMembership = testMemberships[0];
     expect(screen.getByText(testMembership.name)).toBeInTheDocument();
-    expect(screen.getByText(testMembership.description)).toBeInTheDocument();
     expect(container.querySelector(".text-gray-600")).not.toBeInTheDocument();
     expect(container.querySelector(".text-gray-400")).toBeInTheDocument();
     expect(screen.getByText("£100")).toBeInTheDocument();

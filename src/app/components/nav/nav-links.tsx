@@ -21,10 +21,10 @@ export function NavLinks() {
 
   return (
     <div className="bg-white">
-      <header className="absolute inset-x-0 top-0 z-50">
+      <div className="fixed inset-x-0 top-0 z-50">
         <nav
           aria-label="Global"
-          className="fixed  h-[10vh] top-0 left-0 flex w-full items-center bg-white justify-between p-6 lg:px-8 w-50"
+          className="h-[10vh] flex w-full items-center bg-white justify-between p-6 lg:px-8 w-50"
         >
           <div className="flex lg:flex-1">
             <Link href="/" className="-m-1.5 p-1.5">
@@ -131,7 +131,7 @@ export function NavLinks() {
             </div>
           </DialogPanel>
         </Dialog>
-      </header>
+      </div>
     </div>
   );
 }

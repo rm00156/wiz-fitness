@@ -2,9 +2,11 @@ import { render } from "@testing-library/react";
 import RootLayout from "./layout";
 import { ReactElement } from "react";
 
-jest.mock("./data/nav.json", () => ({
-  isDisplayBanner: "true",
-}));
+jest.mock("./data/nav.json", () => ({}), { virtual: true });
+
+beforeEach(() => {
+  jest.resetModules();
+});
 
 jest.mock("./components/nav/nav-links", () => ({
   NavLinks: () => <div data-testid="nav-links">Nav Links</div>,
@@ -36,11 +38,27 @@ describe("layout", () => {
   };
 
   it("should render layout when displaying banner correctly", async () => {
+    jest.doMock("./data/nav.json", () => ({
+      isDisplayBanner: true,
+    }));
     const bodyChildren = await renderLayoutContent();
 
     const { getByTestId } = render(<div>{bodyChildren}</div>);
     expect(getByTestId("nav-links")).toBeInTheDocument();
     expect(getByTestId("banner")).toBeInTheDocument();
+    expect(getByTestId("test-content")).toBeInTheDocument();
+    expect(getByTestId("footer")).toBeInTheDocument();
+  });
+
+  it("should render layout when displaying banner correctly", async () => {
+    jest.doMock("./data/nav.json", () => ({
+      isDisplayBanner: false,
+    }));
+    const bodyChildren = await renderLayoutContent();
+
+    const { getByTestId, queryByTestId } = render(<div>{bodyChildren}</div>);
+    expect(getByTestId("nav-links")).toBeInTheDocument();
+    expect(queryByTestId("banner")).not.toBeInTheDocument();
     expect(getByTestId("test-content")).toBeInTheDocument();
     expect(getByTestId("footer")).toBeInTheDocument();
   });

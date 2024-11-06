@@ -45,7 +45,10 @@ export default async function RootLayout({
       <body className="font-custom">
         <NavLinks />
         {isDisplayBanner && <Banner />}
-        {children}
+        <div className={isDisplayBanner ? "mt-[15vh]" : "mt-[10vh"}>
+          {children}
+        </div>
+
         <FooterSection />
       </body>
     </html>

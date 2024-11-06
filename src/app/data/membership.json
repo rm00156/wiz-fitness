@@ -2,61 +2,71 @@
   {
     "id": "1",
     "href": "#",
-    "name": "Platinum",
-    "contractPrice": 249,
-    "rollingPrice": 306,
+    "name": "Bronze",
+    "contractPrice": 95,
+    "rollingPrice": 115,
     "description": "Our most inclusive membership gives you unlimited access to all Clubs and facilities*, including luxury Sauna.",
     "features": [
-      { "name": "Gym", "access": true },
-      { "name": "Fitness Classes", "access": true },
-      { "name": "Unrestricted Access", "access": true },
-      { "name": "Sauna Access", "access": true },
-      { "name": "Monthly Guest Pass", "access": true },
-      { "name": "Free Towel on every visit", "access": true },
-      { "name": "10% discount in shop", "access": true },
-      { "name": "10% discount on Kids sessions", "access": true },
-      { "name": "Access to exclusive digital content", "access": true }
+      { "name": "4x Signature Class Credits", "access": true },
+      { "name": "Gym Access", "access": true },
+      { "name": "Recovery Suite", "access": true },
+      { "name": "Community Service", "access": true },
+      { "name": "Free Towel Service", "access": true },
+      { "name": "10% off in house food & drink", "access": false },
+      { "name": "Semi Private PT", "access": false }
     ]
   },
 
   {
     "id": "2",
     "href": "#",
-    "name": "Plus",
-    "contractPrice": 180,
-    "rollingPrice": 220,
-    "isMostPopular": true,
-    "description": "Our most popular membership option gives you unlimited access to facilities at WizFit.",
+    "name": "Silver",
+    "contractPrice": 125,
+    "rollingPrice": 152,
+    "description": "Our most inclusive membership gives you unlimited access to all Clubs and facilities*, including luxury Sauna.",
     "features": [
-      { "name": "Gym", "access": true },
-      { "name": "Fitness Classes", "access": true },
-      { "name": "Unrestricted Access", "access": true },
-      { "name": "Sauna Access", "access": true },
-      { "name": "Monthly Guest Pass", "access": true },
-      { "name": "Free Towel on every visit", "access": false },
-      { "name": "10% discount in shop", "access": false },
-      { "name": "10% discount on Kids sessions", "access": false },
-      { "name": "Access to exclusive digital content", "access": false }
+      { "name": "8x Signature Class Credits", "access": true },
+      { "name": "Gym Access", "access": true },
+      { "name": "Recovery Suite", "access": true },
+      { "name": "Community Service", "access": true },
+      { "name": "Free Towel Service", "access": true },
+      { "name": "10% off in house food & drink", "access": false },
+      { "name": "Semi Private PT", "access": false }
     ]
   },
-
   {
     "id": "3",
     "href": "#",
-    "name": "Club",
-    "contractPrice": 74,
-    "rollingPrice": 90,
-    "description": "Gives you access to our facilities at off-peak times during the day: 11am-4pm weekdays and after 2pm weekends.",
+    "name": "Gold",
+    "contractPrice": 140,
+    "rollingPrice": 170,
+    "isMostPopular": true,
+    "description": "Our most inclusive membership gives you unlimited access to all Clubs and facilities*, including luxury Sauna.",
     "features": [
-      { "name": "Gym", "access": true },
-      { "name": "Fitness Classes", "access": true },
-      { "name": "Unrestricted Access", "access": true },
-      { "name": "Sauna Access", "access": false },
-      { "name": "Monthly Guest Pass", "access": false },
-      { "name": "Free Towel on every visit", "access": false },
-      { "name": "10% discount in shop", "access": false },
-      { "name": "10% discount on Kids sessions", "access": false },
-      { "name": "Access to exclusive digital content", "access": false }
+      { "name": "20x Signature Class Credits", "access": true },
+      { "name": "Gym Access", "access": true },
+      { "name": "Recovery Suite", "access": true },
+      { "name": "Community Service", "access": true },
+      { "name": "Free Towel Service", "access": true },
+      { "name": "10% off in house food & drink", "access": true },
+      { "name": "Semi Private PT", "access": false }
+    ]
+  },
+  {
+    "id": "4",
+    "href": "#",
+    "name": "Platinum",
+    "contractPrice": 249,
+    "rollingPrice": 306,
+    "description": "Our most inclusive membership gives you unlimited access to all Clubs and facilities*, including luxury Sauna.",
+    "features": [
+      { "name": "8x Semi Private PT", "access": true },
+      { "name": "12x Signature Class Credits", "access": true },
+      { "name": "Gym Access", "access": true },
+      { "name": "Recovery Suite", "access": true },
+      { "name": "Community Service", "access": true },
+      { "name": "Free Towel Service", "access": true },
+      { "name": "10% off in house food & drink", "access": true }
     ]
   }
 ]

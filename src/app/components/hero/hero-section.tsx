@@ -4,10 +4,7 @@ import LinkButton from "../button/link-button";
 
 const Hero = () => {
   return (
-    <section
-      id="home"
-      className="relative top-[10vh] h-[90vh]  overflow-hidden"
-    >
+    <section id="home" className="relative h-[90vh]  overflow-hidden">
       <video
         title="hero-video"
         className="absolute top-0 left-0 w-full h-full object-cover"

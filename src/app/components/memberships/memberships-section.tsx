@@ -49,15 +49,15 @@ const MemebershipsSection = ({ memberships }: MemebershipsSectionProps) => {
           </div>
         </div>
       </div>
-      <div className="mx-auto mt-16 grid max-w-lg grid-cols-1 items-center gap-4 gap-y-6 sm:mt-20 lg:max-w-4xl lg:grid-cols-3">
+      <div className="flex justify-center mt-16 grid  grid-cols-1 md:grid-cols-2  gap-4 gap-y-6 sm:mt-20  lg:grid-cols-4">
         {memberships.map((membership) => (
           <div
             key={membership.id}
             className={twMerge(
               membership.isMostPopular
-                ? "relative bg-gray-900 shadow-2xl overflow-hidden"
+                ? "relative bg-gray-900 shadow-2xl sm:mx-8 lg:mx-0 overflow-hidden"
                 : "bg-white/60 sm:mx-8 lg:mx-0",
-              "rounded-3xl p-8 ring-1 ring-gray-900/10 sm:p-10"
+              "rounded-3xl p-8 ring-1 ring-gray-900/10 sm:p-10 shadow"
             )}
           >
             {membership.isMostPopular && (
@@ -98,14 +98,14 @@ const MemebershipsSection = ({ memberships }: MemebershipsSectionProps) => {
                 /month
               </span>
             </p>
-            <p
+            {/* <p
               className={twMerge(
                 membership.isMostPopular ? "text-gray-300" : "text-gray-600",
                 "mt-6 text-base/7"
               )}
             >
               {membership.description}
-            </p>
+            </p> */}
             <ul
               role="list"
               className={twMerge(

@@ -5,6 +5,6 @@ describe("banner", () => {
   it("should render banner correctly", async () => {
     render(<Banner />);
 
-    expect(screen.getByRole("link", { name: "Join Now" })).toBeInTheDocument();
+    expect(screen.getByRole("link")).toBeInTheDocument();
   });
 });

@@ -3,6 +3,7 @@ import "./globals.css";
 import { NavLinks } from "./components/nav/nav-links";
 import FooterSection from "./components/footer/footer-section";
 import Banner from "./components/banner/banner";
+import { WizardProvider } from "./context/wizard-context";
 
 export const metadata: Metadata = {
   title: "Wiz Fitness",
@@ -45,8 +46,8 @@ export default async function RootLayout({
       <body className="font-custom">
         <NavLinks />
         {isDisplayBanner && <Banner />}
-        <div className={isDisplayBanner ? "mt-[15vh]" : "mt-[10vh"}>
-          {children}
+        <div className={isDisplayBanner ? "mt-[15vh]" : "mt-[10vh]"}>
+          <WizardProvider>{children}</WizardProvider>
         </div>
 
         <FooterSection />

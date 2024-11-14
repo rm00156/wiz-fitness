@@ -1,0 +1,49 @@
+[
+  {
+    "id": "1",
+    "name": "1 Day Pass",
+    "membershipType": "Daily Passes",
+    "price1": "9.99",
+    "features": [
+      { "name": "Gym Access", "access": true },
+      { "name": "Recovery Suite", "access": true },
+      { "name": "Free Towel Service", "access": true }
+    ]
+  },
+
+  {
+    "id": "2",
+    "name": "3 Day Pass",
+    "membershipType": "Daily Passes",
+    "price1": "20.99",
+    "features": [
+      { "name": "Gym Access", "access": true },
+      { "name": "Recovery Suite", "access": true },
+      { "name": "Free Towel Service", "access": true }
+    ]
+  },
+
+  {
+    "id": "3",
+    "name": "7 Day Pass",
+    "membershipType": "Daily Passes",
+    "price1": "26.99",
+    "features": [
+      { "name": "Gym Access", "access": true },
+      { "name": "Recovery Suite", "access": true },
+      { "name": "Free Towel Service", "access": true }
+    ]
+  },
+
+  {
+    "id": "4",
+    "name": "30 Day Pass",
+    "membershipType": "Daily Passes",
+    "price1": "51.99",
+    "features": [
+      { "name": "Gym Access", "access": true },
+      { "name": "Recovery Suite", "access": true },
+      { "name": "Free Towel Service", "access": true }
+    ]
+  }
+]

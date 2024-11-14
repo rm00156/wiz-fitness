@@ -1,7 +1,7 @@
 import { render } from "@testing-library/react";
 import Home from "./page";
 import { ClassesAndTrainingSectionProps } from "./components/classes-and-training/classes-and-training-section";
-import { MemebershipsSectionProps } from "./components/memberships/memberships-section";
+import { MembershipsSectionProps } from "./components/memberships/memberships-section";
 import { TestimonialProps } from "./components/testimonial/testimonial-section";
 // Mock the data imports
 jest.mock("./data/membership.json", () => [
@@ -80,7 +80,7 @@ jest.mock("./components/wellbeing/wellbeing-section", () => ({
 
 jest.mock("./components/memberships/memberships-section", () => ({
   __esModule: true,
-  default: ({ memberships }: MemebershipsSectionProps) => (
+  default: ({ memberships }: MembershipsSectionProps) => (
     <div data-testid="memberships">
       Memberships Section
       <div data-testid="memberships-props" style={{ display: "none" }}>

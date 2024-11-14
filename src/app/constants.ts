@@ -22,10 +22,9 @@ export type Feature = {
 export type Membership = {
   id: string;
   name: string;
-  href: string;
-  contractPrice: number;
-  rollingPrice: number;
-  description: string;
+  membershipType: "Daily Passes" | "Monthly";
+  price1: string;
+  price2?: string;
   isMostPopular?: boolean;
   features: Feature[];
 };

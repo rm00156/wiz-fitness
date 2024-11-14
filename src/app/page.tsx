@@ -4,7 +4,7 @@ import Hero from "./components/hero/hero-section";
 import ClassesAndTrainingSection from "./components/classes-and-training/classes-and-training-section";
 import WellbeingSection from "./components/wellbeing/wellbeing-section";
 import TestimonialSection from "./components/testimonial/testimonial-section";
-import MemebershipsSection from "./components/memberships/memberships-section";
+import MembershipsSection from "./components/memberships/memberships-section";
 import { HomeMembership, Membership } from "./constants";
 
 const Home = async () => {
@@ -19,7 +19,16 @@ const Home = async () => {
 
       <ClassesAndTrainingSection memberships={homeMemberships} />
       <WellbeingSection />
-      <MemebershipsSection memberships={memberships} />
+      <div
+        id="memberships"
+        className="relative isolate bg-white px-6 pt-[120px] pb-[120px] sm:pb-[80px] sm:pt-[80px] lg:px-8"
+      >
+        <MembershipsSection
+          memberships={memberships}
+          isDisplayCheckBox={true}
+          title="Memberships"
+        />
+      </div>
       <TestimonialSection testimonials={testimonials} />
     </>
   );

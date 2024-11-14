@@ -2,12 +2,20 @@ import { render, screen } from "@testing-library/react";
 import MembershipsSection from "./memberships-section";
 import { membershipsFactory } from "./test-factory/membership-factory";
 import userEvent from "@testing-library/user-event";
+import { WizardProvider } from "../../context/wizard-context";
+
+jest.mock("next/navigation", () => ({
+  useRouter: jest.fn(),
+}));
 
 describe("memberships section", () => {
   it("should render memberships section when not most popular correctly", () => {
     const testMemberships = membershipsFactory.make();
+    const title = "Title";
     const { container } = render(
-      <MembershipsSection memberships={testMemberships} />
+      <WizardProvider>
+        <MembershipsSection memberships={testMemberships} title={title} />
+      </WizardProvider>
     );
 
     const testMembership = testMemberships[0];
@@ -25,9 +33,9 @@ describe("memberships section", () => {
       {
         id: "1",
         name: "name",
-        href: "href",
-        contractPrice: 100,
-        rollingPrice: 150,
+        membershipType: "Daily Passes",
+        price1: "100",
+        price2: "150",
         isMostPopular: true,
         features: [
           { name: "Gym", access: true },
@@ -42,8 +50,12 @@ describe("memberships section", () => {
         ],
       },
     ]);
+
+    const title = "title";
     const { container } = render(
-      <MembershipsSection memberships={testMemberships} />
+      <WizardProvider>
+        <MembershipsSection memberships={testMemberships} title={title} />
+      </WizardProvider>
     );
 
     const testMembership = testMemberships[0];
@@ -57,7 +69,16 @@ describe("memberships section", () => {
 
   it("should switch to rolling price view when switch clicked", async () => {
     const testMemberships = membershipsFactory.make();
-    render(<MembershipsSection memberships={testMemberships} />);
+    const title = "title";
+    render(
+      <WizardProvider>
+        <MembershipsSection
+          memberships={testMemberships}
+          title={title}
+          isDisplayCheckBox={true}
+        />
+      </WizardProvider>
+    );
 
     const checkbox = screen.getByRole("checkbox");
     expect(checkbox).toBeInTheDocument();
@@ -68,14 +89,14 @@ describe("memberships section", () => {
   });
 
   it("should display x mark i red-400 if a feature is not available and is most popular", async () => {
+    const title = "title";
     const testMemberships = await membershipsFactory.create([
       {
         id: "1",
         name: "name",
-        href: "href",
-        contractPrice: 100,
-        rollingPrice: 150,
-        description: "description",
+        membershipType: "Daily Passes",
+        price1: "100",
+        price2: "150",
         isMostPopular: true,
         features: [
           { name: "Gym", access: false },
@@ -90,7 +111,11 @@ describe("memberships section", () => {
         ],
       },
     ]);
-    render(<MembershipsSection memberships={testMemberships} />);
+    render(
+      <WizardProvider>
+        <MembershipsSection memberships={testMemberships} title={title} />
+      </WizardProvider>
+    );
 
     const listItem = screen.getByText("Gym");
     expect(listItem).toBeInTheDocument();
@@ -99,14 +124,14 @@ describe("memberships section", () => {
   });
 
   it("should display x mark i red-600 if a feature is not available and is not most popular", async () => {
+    const title = "title";
     const testMemberships = await membershipsFactory.create([
       {
         id: "1",
         name: "name",
-        href: "href",
-        contractPrice: 100,
-        rollingPrice: 150,
-        description: "description",
+        membershipType: "Monthly",
+        price1: "100",
+        price2: "150",
         isMostPopular: false,
         features: [
           { name: "Gym", access: false },
@@ -121,7 +146,11 @@ describe("memberships section", () => {
         ],
       },
     ]);
-    render(<MembershipsSection memberships={testMemberships} />);
+    render(
+      <WizardProvider>
+        <MembershipsSection memberships={testMemberships} title={title} />
+      </WizardProvider>
+    );
 
     const listItem = screen.getByText("Gym");
     expect(listItem).toBeInTheDocument();

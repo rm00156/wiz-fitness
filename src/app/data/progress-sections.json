@@ -1,0 +1,17 @@
+[
+  {
+    "step": 1,
+    "name": "Your Plan",
+    "href": "/join-now"
+  },
+  {
+    "step": 2,
+    "name": "Your Details",
+    "href": "/join-now/your-details"
+  },
+  {
+    "step": 3,
+    "name": "Payment",
+    "href": "/join-now/payment"
+  }
+]

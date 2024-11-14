@@ -32,7 +32,7 @@ export default function Banner() {
           />
         </div>
         <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
-          <a href="/join-now" className="text-sm/6 text-gray-900">
+          <a href="/join-now" className="text-sm text-gray-900">
             Sign up before <b>January 1st 2025</b> and get <b>15% off</b> your
             first 3 months
           </a>

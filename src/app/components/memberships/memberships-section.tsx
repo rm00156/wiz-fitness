@@ -1,10 +1,10 @@
 "use client";
-import { Membership } from "@/app/constants";
 import { useState } from "react";
 import MembershipItem from "./membership-item";
+import { Product } from "../../stripe/stripe-helper";
 
 export type MembershipsSectionProps = {
-  memberships: Membership[];
+  memberships: Product[];
   title: string;
   titleClassName?: string;
   isDisplayCheckBox?: boolean;

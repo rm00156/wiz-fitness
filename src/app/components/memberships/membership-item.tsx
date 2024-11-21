@@ -1,11 +1,12 @@
-import { Membership } from "@/app/constants";
 import { twMerge } from "tailwind-merge";
-import { CheckIcon, XMarkIcon } from "@heroicons/react/20/solid";
+import { CheckIcon } from "@heroicons/react/20/solid";
 import { useRouter } from "next/navigation";
 import { useWizard } from "../../context/wizard-context";
+import { Product } from "../../stripe/stripe-helper";
+import Stripe from "stripe";
 
 type MembershipItemProps = {
-  membership: Membership;
+  membership: Product;
   isChecked?: boolean;
 };
 
@@ -15,14 +16,16 @@ const MembershipItem = ({ membership, isChecked }: MembershipItemProps) => {
 
   const goTo = (
     name: string,
-    membershipType: "Daily Passes" | "Monthly" | "Monthly - Rolling",
-    total: string
+    membershipType: string,
+    total: number,
+    priceId: string
   ) => {
     updateFormData({
       ...formData,
       membership: name,
       membershipType: membershipType,
-      total: total,
+      total,
+      priceId,
     });
 
     router.push("/join-now/your-details");
@@ -61,7 +64,10 @@ const MembershipItem = ({ membership, isChecked }: MembershipItemProps) => {
             "text-5xl font-semibold tracking-tight"
           )}
         >
-          £{!isChecked ? membership.price1 : membership.price2}
+          £
+          {!isChecked
+            ? (membership.default_price.unit_amount as number) / 100
+            : (membership.secondary_price?.unit_amount as number) / 100}
         </span>
         <span
           className={twMerge(
@@ -80,27 +86,15 @@ const MembershipItem = ({ membership, isChecked }: MembershipItemProps) => {
           "mt-8 space-y-3 text-sm/6 sm:mt-10"
         )}
       >
-        {membership.features.map((feature) => (
+        {membership.features.map((feature: Stripe.Product.MarketingFeature) => (
           <li key={feature.name} className="flex gap-x-3">
-            {feature.access ? (
-              <CheckIcon
-                aria-hidden="true"
-                className={twMerge(
-                  membership.isMostPopular
-                    ? "text-amber-400"
-                    : "text-amber-600",
-                  "h-6 w-5 flex-none"
-                )}
-              />
-            ) : (
-              <XMarkIcon
-                aria-hidden="true"
-                className={twMerge(
-                  membership.isMostPopular ? "text-red-400" : "text-red-600",
-                  "h-6 w-5 flex-none"
-                )}
-              />
-            )}
+            <CheckIcon
+              aria-hidden="true"
+              className={twMerge(
+                membership.isMostPopular ? "text-amber-400" : "text-amber-600",
+                "h-6 w-5 flex-none"
+              )}
+            />
 
             {feature.name}
           </li>
@@ -119,8 +113,15 @@ const MembershipItem = ({ membership, isChecked }: MembershipItemProps) => {
         onClick={() =>
           goTo(
             membership.name,
-            isChecked ? "Monthly - Rolling" : membership.membershipType,
-            isChecked ? (membership.price2 as string) : membership.price1
+            isChecked
+              ? (membership.secondary_price?.nickname as string)
+              : (membership.default_price?.nickname as string),
+            isChecked
+              ? (membership.secondary_price?.unit_amount as number) / 100
+              : (membership.default_price?.unit_amount as number) / 100,
+            isChecked
+              ? (membership.secondary_price?.id as string)
+              : membership.default_price.id
           )
         }
       >

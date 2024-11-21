@@ -1,16 +1,16 @@
+import { getProductsList } from "../stripe/stripe-helper";
 import JoinNow from "./join-now-page";
 
 const Page = async () => {
-  const dailyPasses = await require("../data/daily-pass.json");
-  const memberships = await require("../data/membership.json");
-
   const progressSections = await require("../data/progress-sections.json");
+
+  const { dailyProducts, membershipProducts } = await getProductsList();
 
   return (
     <JoinNow
       progressSections={progressSections}
-      dailyPasses={dailyPasses}
-      monthlies={memberships}
+      dailyPasses={dailyProducts}
+      monthlies={membershipProducts}
     />
   );
 };

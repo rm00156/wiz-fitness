@@ -2,13 +2,13 @@
 import { createContext, useContext, useState, ReactNode } from "react";
 
 export type FormData = {
-  membershipType?: "Daily Passes" | "Monthly" | "Monthly - Rolling";
+  membershipType?: string;
   membership?: string;
   paymentType?:
     | "12 Month Contract"
     | "One Time Payment"
     | "Rolling Subscription";
-  total?: string;
+  total?: number;
   startDate?: string;
   firstName?: string;
   lastName?: string;
@@ -19,6 +19,7 @@ export type FormData = {
   gender?: "Male" | "Female";
   disabledAccess?: "No" | "Yes";
   dateOfBirth?: string;
+  priceId?: string;
 };
 
 export type WizardContextType = {

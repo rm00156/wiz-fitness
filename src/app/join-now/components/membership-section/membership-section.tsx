@@ -1,11 +1,11 @@
 "use client";
-import { Membership } from "@/app/constants";
 import { useWizard } from "../../../context/wizard-context";
 import { twMerge } from "tailwind-merge";
 import MembershipsSection from "../../../components/memberships/memberships-section";
+import { Product } from "../../../stripe/stripe-helper";
 type MemberSectionProps = {
-  dailyPasses: Membership[];
-  monthlies: Membership[];
+  dailyPasses: Product[];
+  monthlies: Product[];
 };
 
 type Options = {
@@ -22,7 +22,7 @@ const MembershipSection = ({ dailyPasses, monthlies }: MemberSectionProps) => {
   };
 
   const displaySelectedOptions = (
-    options: Membership[],
+    options: Product[],
     heading: string,
     isDisplayCheckBox: boolean
   ) => {
@@ -39,19 +39,21 @@ const MembershipSection = ({ dailyPasses, monthlies }: MemberSectionProps) => {
   };
 
   const selectOptions = () => {
-    const dailyPassFromPrice = dailyPasses[0].price1;
-    const monthlyFromPrice = monthlies[0].price1;
+    const dailyPassFromPrice =
+      (dailyPasses[0].default_price.unit_amount as number) / 100;
+    const monthlyFromPrice =
+      (monthlies[0].default_price.unit_amount as number) / 100;
 
     const options = [
       {
         name: "Daily Passes",
         description: "Passes for the gym from 1 day to 30 days",
-        fromPrice: dailyPassFromPrice,
+        fromPrice: dailyPassFromPrice.toString(),
       },
       {
         name: "Monthly",
         description: "Ongoing access to all we offer",
-        fromPrice: monthlyFromPrice,
+        fromPrice: monthlyFromPrice.toString(),
       },
     ] as Options[];
 

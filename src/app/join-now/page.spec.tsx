@@ -3,6 +3,14 @@ import { render, screen } from "@testing-library/react";
 import { WizardProvider, useWizard } from "../context/wizard-context";
 import { useRouter } from "next/navigation";
 import { testRouterFactory } from "../test-factory/test-router";
+import { getProductsList } from "../stripe/stripe-helper";
+import { membershipFactory } from "../components/memberships/test-factory/membership-factory";
+
+jest.mock("../stripe/stripe-helper", () => {
+  return {
+    getProductsList: jest.fn(),
+  };
+});
 
 jest.mock("next/navigation", () => {
   return { useRouter: jest.fn() };
@@ -21,6 +29,11 @@ describe("page", () => {
     jest.mocked(useWizard).mockReturnValue({
       formData: {},
       updateFormData: jest.fn(),
+    });
+
+    jest.mocked(getProductsList).mockResolvedValue({
+      dailyProducts: [membershipFactory.build()],
+      membershipProducts: [membershipFactory.build()],
     });
     const page = await Page();
 

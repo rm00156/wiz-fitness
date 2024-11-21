@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import PaymentPage from "./payment-page";
 
 const Page = async () => {
@@ -5,7 +6,12 @@ const Page = async () => {
   const stripeKey = process.env.stripe_private_key as string;
   return (
     <>
-      <PaymentPage progressSections={progressSections} stripeKey={stripeKey} />
+      <Suspense>
+        <PaymentPage
+          progressSections={progressSections}
+          stripeKey={stripeKey}
+        />
+      </Suspense>
     </>
   );
 };

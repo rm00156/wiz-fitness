@@ -5,10 +5,11 @@ import ClassesAndTrainingSection from "./components/classes-and-training/classes
 import WellbeingSection from "./components/wellbeing/wellbeing-section";
 import TestimonialSection from "./components/testimonial/testimonial-section";
 import MembershipsSection from "./components/memberships/memberships-section";
-import { HomeMembership, Membership } from "./constants";
+import { HomeMembership } from "./constants";
+import { getProductsList } from "./stripe/stripe-helper";
 
 const Home = async () => {
-  const memberships = (await require("./data/membership.json")) as Membership[];
+  const { membershipProducts } = await getProductsList();
   const homeMemberships =
     (await require("./data/home-membership.json")) as HomeMembership[];
 
@@ -24,7 +25,7 @@ const Home = async () => {
         className="relative isolate bg-white px-6 pt-[120px] pb-[120px] sm:pb-[80px] sm:pt-[80px] lg:px-8"
       >
         <MembershipsSection
-          memberships={memberships}
+          memberships={membershipProducts}
           isDisplayCheckBox={true}
           title="Memberships"
         />

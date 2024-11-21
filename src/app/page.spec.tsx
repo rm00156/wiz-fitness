@@ -3,23 +3,16 @@ import Home from "./page";
 import { ClassesAndTrainingSectionProps } from "./components/classes-and-training/classes-and-training-section";
 import { MembershipsSectionProps } from "./components/memberships/memberships-section";
 import { TestimonialProps } from "./components/testimonial/testimonial-section";
+import { getProductsList } from "./stripe/stripe-helper";
+import { membershipFactory } from "./components/memberships/test-factory/membership-factory";
+
 // Mock the data imports
-jest.mock("./data/membership.json", () => [
-  {
-    id: 1,
-    title: "Basic Plan",
-    price: "£29.99",
-    description: "Great for beginners",
-    features: ["Feature 1", "Feature 2"],
-  },
-  {
-    id: 2,
-    title: "Premium Plan",
-    price: "£49.99",
-    description: "For serious fitness enthusiasts",
-    features: ["Feature 1", "Feature 2", "Feature 3"],
-  },
-]);
+
+jest.mock("./stripe/stripe-helper", () => {
+  return {
+    getProductsList: jest.fn(),
+  };
+});
 
 jest.mock("./data/home-membership.json", () => [
   {
@@ -104,6 +97,10 @@ jest.mock("./components/testimonial/testimonial-section", () => ({
 
 describe("Home Page", () => {
   it("renders all sections with correct props", async () => {
+    jest.mocked(getProductsList).mockResolvedValue({
+      dailyProducts: [membershipFactory.build()],
+      membershipProducts: [membershipFactory.build()],
+    });
     const { getByTestId } = render(await Home());
 
     // Verify all sections are rendered
@@ -126,8 +123,7 @@ describe("Home Page", () => {
     const membershipsProps = JSON.parse(
       getByTestId("memberships-props").textContent || "[]"
     );
-    expect(membershipsProps).toHaveLength(2);
-    expect(membershipsProps[0]).toHaveProperty("title", "Basic Plan");
+    expect(membershipsProps).toHaveLength(1);
 
     const testimonialsProps = JSON.parse(
       getByTestId("testimonials-props").textContent || "[]"
@@ -139,7 +135,10 @@ describe("Home Page", () => {
   it("handles missing data gracefully", async () => {
     // Temporarily mock data to return empty arrays
     jest.resetModules();
-    jest.mock("./data/membership.json", () => []);
+    jest.mocked(getProductsList).mockResolvedValue({
+      dailyProducts: [],
+      membershipProducts: [],
+    });
     jest.mock("./data/home-membership.json", () => []);
     jest.mock("./data/testimonials.json", () => []);
 

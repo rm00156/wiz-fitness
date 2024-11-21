@@ -1,5 +1,5 @@
 "use client";
-import { Membership } from "../constants";
+import { Product } from "../stripe/stripe-helper";
 import MembershipSection from "./components/membership-section/membership-section";
 import ProgressSection, {
   ProgressSteps,
@@ -7,8 +7,8 @@ import ProgressSection, {
 
 type JoinNowProps = {
   progressSections: ProgressSteps[];
-  dailyPasses: Membership[];
-  monthlies: Membership[];
+  dailyPasses: Product[];
+  monthlies: Product[];
 };
 
 const JoinNow = ({
